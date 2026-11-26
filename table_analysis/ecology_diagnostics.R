@@ -1,0 +1,1 @@
+vif_table<-function(fit,label){x<-model.matrix(fit)[,-1,drop=FALSE];v<-vapply(seq_len(ncol(x)),function(j){aux<-lm(x[,j]~x[,-j,drop=FALSE]);1/(1-summary(aux)$r.squared)},numeric(1));data.frame(model=label,term=colnames(x),vif=v)}
